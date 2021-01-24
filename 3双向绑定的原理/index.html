@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+    #button{
+      width:80px;
+      line-height:32px;
+      font-size:18px;
+      text-align:center;
+    }
+    .bg-grey{
+      background:#ccc;
+    }
+    .text-black{
+      color:#000;
+    }
+    .border-radius{
+      border-radius:4px;
+    }
+    .point{
+      cursor:pointer;
+    }
+    .text-def{
+      font-size:14px;
+
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>能说说双向绑定和它的原理</h1>
+    <p>如何使用、双向绑定的好处、在哪里使用双向绑定</p>
+    <p>v-model只是：value @input的语法糖，优化代码，减少冗余代码，代码可读性高</p>
+    <p>使用场景： 表单使用场景</p>
+    <p>双向绑定的原理</p>
+   <input v-model="name" />
+   <div>{{name}}</div>
+  </div>
+  <script>
+    var app=new Vue({
+      el:'#app',
+      data(){
+        return {
+          list:[1,2,4,5,6],
+          name:''
+        }
+      },
+      mounted(){
+        setTimeout(()=>{
+          this.list.push(7);
+        },2000)
+      },
+      methods:{
+        addItem(){
+          this.list.push('3')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

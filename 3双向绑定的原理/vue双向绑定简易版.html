@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="demo">
+    <div id="dname">hello word</div>
+    <input type="text" id="name">
+  </div>
+
+  <script src="./vue2.js"></script>
+  <script>
+ 
+    // 监听器
+    // 订阅器
+    // 订阅者
+     
+    /**
+     * 简易版本
+     */
+    function MyVue(options) {
+      var self = this;
+     
+      this.data = options.data;
+     
+      observe(this.data); // 数据劫持
+     
+      var $name = document.querySelector('#name');
+     
+      var $dname = document.querySelector('#dname');
+     
+      $name.value = this.data.name; // 初始化视图
+     
+      new Watcher(this, 'name', function(val) { // 添加订阅，data更新view
+        $name.value = val;
+        $dname.innerHTML = val;
+      });
+     
+      $name.addEventListener('input', function(e) { // 添加事件监听，view更新data
+        self.data.name = e.target.value;
+      })
+     
+      return this;
+    }
+     
+    var myvm = new MyVue({
+      data: {
+        name: "hello word",
+      }
+    })
+    </script>
+</body>
+</html>

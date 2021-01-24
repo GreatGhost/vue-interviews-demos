@@ -1,0 +1,60 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="./vue.js"></script>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <h2 v-bind:class="myColor">&#123;&#123; name &#125;&#125;</h2>
+      <input :value="age"/>
+      <input type="text" name="" v-model="name">
+      <button @click="clickOk">Ok</button>
+    </div>
+  </body>
+</html>
+ 
+<script>
+ 
+// 监听器
+// 订阅器
+// 订阅者
+// 编译器
+ 
+/**
+ * 完全版本
+ */
+function MyVue(options) {
+  this.vm = this;
+ 
+  this.data = options.data;
+ 
+  this.methods = options.methods;
+ 
+  observe(this.data);
+ 
+  new Compile(options.el, this.vm);
+ 
+  return this;
+}
+ 
+var myvm = new MyVue({
+  el: "#demo",
+  data: {
+    name: "hello word",
+    myColor: "red",
+    age: 11
+  },
+  methods: {
+    clickOk: function() {
+      alert("I am OK");
+    }
+  }
+});
+ 
+</script>
